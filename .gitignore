@@ -25,3 +25,4 @@ Thumbs.db
 # Editor files
 .vscode/*
 !.vscode/settings.json
+database/machines_data.sql
