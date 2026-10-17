@@ -137,6 +137,22 @@ Planned improvements include:
 Electronics & Computer Engineering Student
 
 GitHub: [@utkarshas05](https://github.com/utkarshas05)
+## 🖥️ Featured Project
+
+### PowerPress Production Monitoring System
+
+A web-based production monitoring system designed to monitor power press machines, production, uptime, downtime, and machine activity.
+
+**Technologies:** React • Node.js • PostgreSQL • REST API • WiFi/IoT • Git/GitHub
+
+### 🔐 Login
+![PowerPress Login](https://raw.githubusercontent.com/utkarshas05/powerpress-production-monitoring/main/screenshots/login.png)
+
+### 📊 Production Dashboard
+![PowerPress Dashboard](https://raw.githubusercontent.com/utkarshas05/powerpress-production-monitoring/main/screenshots/dashboard.png)
+
+### ⚙️ Machine Details
+![PowerPress Machine Details](https://raw.githubusercontent.com/utkarshas05/powerpress-production-monitoring/main/screenshots/machine-details.png)
 
 ---
 
