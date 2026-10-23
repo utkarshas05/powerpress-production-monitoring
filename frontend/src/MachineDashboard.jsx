@@ -1458,67 +1458,33 @@ export default function MachineDashboard({
     // TODAY'S PRODUCTION
     // =================================================
 
-    const todayProduction =
-        useMemo(() => {
+    const todayProduction = useMemo(() => {
+        const todayRecords = production.filter((record) => {
+            if (!record.timestamp) {
+                return false;
+            }
 
-            return production.reduce(
-                (
-                    total,
-                    record
-                ) => {
+            const timestamp = new Date(record.timestamp);
 
-                    if (
-                        !record.timestamp
-                    ) {
-                        return total;
-                    }
-
-
-                    const timestamp =
-                        new Date(
-                            record.timestamp
-                        );
-
-
-                    if (
-                        Number.isNaN(
-                            timestamp.getTime()
-                        )
-                    ) {
-                        return total;
-                    }
-
-
-                    if (
-                        timestamp >=
-                        today &&
-                        timestamp <=
-                        currentTime
-                    ) {
-
-                        return (
-                            total +
-                            (
-                                Number(
-                                    record.cycle_count
-                                ) || 0
-                            )
-                        );
-
-                    }
-
-
-                    return total;
-
-                },
-                0
+            return (
+                !Number.isNaN(timestamp.getTime()) &&
+                timestamp >= today &&
+                timestamp <= currentTime
             );
+        });
 
-        }, [
-            production,
-            today,
-            currentTime,
-        ]);
+        if (todayRecords.length === 0) {
+            return 0;
+        }
+
+        // cycle_count is cumulative, so use the highest
+        // count instead of adding every record together.
+        return Math.max(
+            ...todayRecords.map(
+                (record) => Number(record.cycle_count) || 0
+            )
+        );
+    }, [production, today, currentTime]);
 
 
     // =================================================
